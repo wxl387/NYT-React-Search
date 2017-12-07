@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import Container from "../../components/Container";
+import {Container} from "../../components/Container";
 import Jumbotron from "../../components/Jumbotron";
 import { SearchForm, SearchBtn } from "../../components/SearchForm";
 import { SearchResultsList, SearchResultsListItem } from "../../components/SearchResults";
@@ -19,6 +19,7 @@ class Search extends Component {
 
     searchNYT = (query, start_year, end_year) => {
         API.search(query, start_year, end_year)
+            .then(res => {console.log(res.data)})
             .then(res => this.setState({ results: res.data}))
             .catch(err => console.log(err));
     };
